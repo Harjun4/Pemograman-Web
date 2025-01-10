@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @package    Joomla.Site
+ * @package    Joomla.Administrator
  *
  * @copyright  (C) 2017 Open Source Matters, Inc. <https://www.joomla.org>
  * @license    GNU General Public License version 2 or later; see LICENSE.txt
@@ -29,7 +29,7 @@ if (!file_exists(JPATH_LIBRARIES . '/vendor/autoload.php') || !is_dir(JPATH_PUBL
 require_once JPATH_BASE . '/includes/framework.php';
 
 // Set profiler start time and memory usage and mark afterLoad in the profiler.
-JDEBUG && \Joomla\CMS\Profiler\Profiler::getInstance('Application')->setStart($startTime, $startMem)->mark('afterLoad');
+JDEBUG ? \Joomla\CMS\Profiler\Profiler::getInstance('Application')->setStart($startTime, $startMem)->mark('afterLoad') : null;
 
 // Boot the DI container
 $container = \Joomla\CMS\Factory::getContainer();
@@ -41,15 +41,15 @@ $container = \Joomla\CMS\Factory::getContainer();
  * is supported.  This includes aliases for aliased class names, and the keys for aliased class names should be considered
  * deprecated to be removed when the class name alias is removed as well.
  */
-$container->alias('session.web', 'session.web.site')
-    ->alias('session', 'session.web.site')
-    ->alias('JSession', 'session.web.site')
-    ->alias(\Joomla\CMS\Session\Session::class, 'session.web.site')
-    ->alias(\Joomla\Session\Session::class, 'session.web.site')
-    ->alias(\Joomla\Session\SessionInterface::class, 'session.web.site');
+$container->alias('session.web', 'session.web.administrator')
+    ->alias('session', 'session.web.administrator')
+    ->alias('JSession', 'session.web.administrator')
+    ->alias(\Joomla\CMS\Session\Session::class, 'session.web.administrator')
+    ->alias(\Joomla\Session\Session::class, 'session.web.administrator')
+    ->alias(\Joomla\Session\SessionInterface::class, 'session.web.administrator');
 
 // Instantiate the application.
-$app = $container->get(\Joomla\CMS\Application\SiteApplication::class);
+$app = $container->get(\Joomla\CMS\Application\AdministratorApplication::class);
 
 // Set the application as global app
 \Joomla\CMS\Factory::$application = $app;

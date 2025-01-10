@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @package     Joomla.Site
+ * @package     Joomla.Administrator
  * @subpackage  Template.system
  *
  * @copyright   (C) 2007 Open Source Matters, Inc. <https://www.joomla.org>

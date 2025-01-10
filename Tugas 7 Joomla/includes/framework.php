@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @package    Joomla.Site
+ * @package    Joomla.Administrator
  *
  * @copyright  (C) 2005 Open Source Matters, Inc. <https://www.joomla.org>
  * @license    GNU General Public License version 2 or later; see LICENSE.txt
@@ -9,7 +9,6 @@
 
 \defined('_JEXEC') or die;
 
-use Joomla\CMS\Uri\Uri;
 use Joomla\CMS\Version;
 use Joomla\Utilities\IpHelper;
 
@@ -29,7 +28,7 @@ if (
     }
 
     if (JPATH_ROOT === JPATH_PUBLIC) {
-        header('Location: ' . Uri::base() . 'installation/index.php');
+        header('Location: ../installation/index.php');
 
         exit;
     }
@@ -78,9 +77,7 @@ switch ($config->error_reporting) {
         break;
 }
 
-if (!\defined('JDEBUG')) {
-    \define('JDEBUG', $config->debug);
-}
+\define('JDEBUG', $config->debug);
 
 // Check deprecation logging
 if (empty($config->log_deprecated)) {

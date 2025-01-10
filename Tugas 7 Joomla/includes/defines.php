@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @package    Joomla.Site
+ * @package    Joomla.Administrator
  *
  * @copyright  (C) 2005 Open Source Matters, Inc. <https://www.joomla.org>
  * @license    GNU General Public License version 2 or later; see LICENSE.txt
@@ -11,7 +11,13 @@
 
 // Define JPATH constants if not defined yet
 \defined('JPATH_BASE') || \define('JPATH_BASE', \dirname(__DIR__));
-\defined('JPATH_ROOT') || \define('JPATH_ROOT', JPATH_BASE);
+
+// Global definitions
+$parts = explode(DIRECTORY_SEPARATOR, JPATH_BASE);
+array_pop($parts);
+
+// Defines
+\defined('JPATH_ROOT') || \define('JPATH_ROOT', implode(DIRECTORY_SEPARATOR, $parts));
 \defined('JPATH_SITE') || \define('JPATH_SITE', JPATH_ROOT);
 \defined('JPATH_PUBLIC') || \define('JPATH_PUBLIC', JPATH_ROOT);
 \defined('JPATH_CONFIGURATION') || \define('JPATH_CONFIGURATION', JPATH_ROOT);
